@@ -1,0 +1,23 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+{% block title %} DCH BLOG {% endblock %}
+{% block content %}
+  <div class="ui container">
+    <hr>
+    {% for post in posts %}
+      <div class="ui very padded raised container segment">
+        <h2>
+          <a href="/post/{{post.slug}}">{{post.title}}</a>
+        </h2>
+        <br>
+        <p>
+          {{post.body|truncatechars:200}}
+        </p>
+        <br>
+        <p>
+          发布于：{{post.pub_date | date:"Y.m.d, h:m:s"}}
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

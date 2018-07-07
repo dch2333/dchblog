@@ -1,0 +1,89 @@
+<!-- header.html -->
+ <div class="ui left sidebar wide vertical inverted menu" width="80%">
+    <div class="ui container">
+      <a class="toc item" onclick="toggle()">
+        <i class="sidebar icon">
+        </i>
+      </a>
+      <div class="item">
+        <img class="ui medium mini circular image" src="/static/image/touxiang.jpg">
+      </div>
+      <hr>
+      <div class="ui inverted segment">
+      <div class="ui inverted accordion">
+        <div class="title">
+          <i class="dropdown icon"></i>
+            BLOG分类
+        </div>
+        <div class="content">
+          <a class="item">
+            笔记系列
+          </a>
+          <a class="item">
+            生活杂感
+          </a>
+          <a class="item">
+            网络爬虫
+          </a>
+          <a class="item">
+            其他她它
+          </a>
+        </div>
+        <hr>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            BLOG功能
+        </div>
+        <div class="content">
+          <a class="item" href="/report">
+            零汇报统计
+          </a>
+        </div>
+        <hr>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            我的大创
+        </div>
+        <div class="content">
+          <a class="item">
+              基于图像处理的麻将识别算法设计
+          </a>
+        </div>
+        <hr>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            个人简历
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="ui top hidden fixed inverted menu">
+      <div class="ui container">
+        <a class="toc item" onclick="toggle()">
+          <i class="sidebar icon">
+          </i>
+        </a>
+        <a class="active item" href="/">主页</a>
+
+        {% if request.session.is_login %}
+          <a href="#" class="item right"><i class="user icon"></i>当前在线：{{ request.session.user_name }}</a>
+          <a href="/logout" class="item right"><i class="remove user icon"></i>登出</a>
+        {% else %}
+          <a href="/login" class="item right"><i class="add user icon"></i>登录</a>
+          <a href="/register" class="item right"><i class="add user icon"></i>注册</a>
+        {% endif %}
+
+      </div>
+    </div>
+    <div class="ui container">
+      <div class="ui fluid image">
+        <img src=" /static/image/banner.jpg">
+      </div>
+    </div>
+    <script>
+    $('.ui.accordion')
+    .accordion()
+    ;
+  </script>

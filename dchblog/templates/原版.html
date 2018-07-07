@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+  <script>
+  function toggle() {
+    $('.ui.sidebar').sidebar({
+        context: 'body',
+        dimPage : false,
+        onVisible: function() {
+            $('body').click(function(e){
+                this.unbind(e);
+            });
+        },
+        onShow: function() {
+            $('.ui.sidebar').css("z-index",999);
+        },
+        onHide: function() {
+            $('.ui.sidebar').css("z-index",1);
+        }
+    }).sidebar('toggle');
+  }
+  </script>
+</head>
+
+<body>
+  <div class="ui left sidebar wide vertical inverted menu" width="80%">
+    <div class="ui container">
+      <a class="toc item" onclick="toggle()">
+        <i class="sidebar icon">
+        </i>
+      </a>
+      <div class="item">
+        <img class="ui medium mini circular image" src="{% static 'image/touxiang.jpg' %}">
+      </div>
+      <hr>
+      <div class="ui inverted segment">
+      <div class="ui inverted accordion">
+        <div class="title">
+          <i class="dropdown icon"></i>
+            BLOG分类
+        </div>
+        <div class="content">
+          <a class="item">
+            笔记系列
+          </a>
+          <a class="item">
+            生活杂感
+          </a>
+          <a class="item">
+            网络爬虫
+          </a>
+          <a class="item">
+            其他她它
+          </a>
+        </div>
+        <hr>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            BLOG功能
+        </div>
+        <div class="content">
+          <a class="item">
+            零汇报统计
+          </a>
+        </div>
+        <hr>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            我的大创
+        </div>
+        <div class="content">
+          <a class="item">
+              基于图像处理的麻将识别算法设计
+          </a>
+        </div>
+        <hr>
+        <div class="title">
+          <i class="dropdown icon"></i>
+            个人简历
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="pusher">
+    <div class="ui top hidden fixed inverted menu">
+      <div class="ui container">
+        <a class="toc item" onclick="toggle()">
+          <i class="sidebar icon">
+          </i>
+        </a>
+        <a class="active item" href="/">主页</a>
+        <a class="item">Work</a>
+        <a class="item">Company</a>
+        <a class="item">Careers</a>
+      </div>
+    </div>
+    <div class="ui container">
+      <div class="ui fluid image">
+        <img src="{% static 'image/banner.jpg' %}">
+      </div>
+      <hr>
+      {% for post in posts %}
+        <div class="ui very padded raised container segment">
+          <h2>
+            <a href="/post/{{post.slug}}">{{post.title}}</a>
+          </h2>
+          <br>
+          <p>
+            {{post.body|truncatechars:40}}
+          </p>
+          <br>
+          <p>
+            发布于：{{post.pub_date | date:"Y.m.d, h:m:s"}}
+          </p>
+        </div>
+      {% endfor %}
+      {{now}}
+    </div>
+  </div>
+  <div class="ui dimmer">
+    <div class="content">
+      <div class="center">
+        <h2 class="ui inverted icon header"><i class="heart icon"></i> Dimmed Message! </h2>
+      </div>
+    </div>
+  </div>
+  <script>
+    $('.ui.accordion')
+    .accordion()
+    ;
+  </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+{% block title %} 零汇报统计 {% endblock %}
+{% block content %}
+  <div>
+    <hr>
+    <div class="ui text container">
+      <h2>
+        {{ now|date:"Y年m月d日" }}
+      </h2>
+    </div>
+  </div>
+  <table class="ui compact striped table">
+
+    <tbody>
+      {% for people in form %}
+        {% if people.date|date:"Y年m月d日" == now|date:"Y年m月d日" %}
+          <tr>
+            <td>
+              专业班级
+            </td>
+            <td>
+              {{people.myclass}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              姓名
+            </td>
+            <td>
+              {{people.name}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              校内晚归原因、地点
+            </td>
+            <td>
+              {{people.reason_in_school}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              校外晚归原因、地点
+            </td>
+            <td>
+              {{people.reason_out_school}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              返校时间
+            </td>
+            <td>
+              {{people.return_time}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              联系电话
+            </td>
+            <td>
+              {{people.tell}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              是否能联系上
+            </td>
+            <td>
+              {{people.connect}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              所在宿舍联络人电话
+            </td>
+            <td>
+              {{people.another_tell}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              辅导员
+            </td>
+            <td>
+              {{people.fudaoyuan}}
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+      <!--表单部分-->
+          <tr>
+            <td>
+              专业班级
+            </td>
+            <td>
+              {{ report_form.myclass }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              姓名
+            </td>
+            <td>
+              {{ report_form.name }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              校内晚归原因、地点
+            </td>
+            <td>
+              {{ report_form.reason_in_school }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              校外晚归原因、地点
+            </td>
+            <td>
+              {{ report_form.reason_out_school }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              返校时间
+            </td>
+            <td>
+              {{ report_form.return_time }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              联系电话
+            </td>
+            <td>
+              {{ report_form.tell }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              是否能联系上
+            </td>
+            <td>
+              {{ report_form.connect }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              所在宿舍联络人电话
+            </td>
+            <td>
+              {{ report_form.another_tell }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              辅导员
+            </td>
+            <td>
+              {{ report_form.fudaoyuan }}
+            </td>
+          </tr>
+    </tbody>
+  </table>
+{% endblock %}
+
+<!--
+
+
+
+<tr>
+            <td>
+              {{people.myclass}}
+            </td>
+            <td>
+              {{ report_form.myclass }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.name}}
+            </td>
+            <td>
+              {{ report_form.name }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.reason_in_school}}
+            </td>
+            <td>
+              {{ report_form.reason_in_school }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.reason_out_school}}
+            </td>
+            <td>
+              {{ report_form.reason_out_school }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.return_time}}
+            </td>
+            <td>
+              {{ report_form.return_time }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.tell}}
+            </td>
+            <td>
+              {{ report_form.tell }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.connect}}
+            </td>
+            <td>
+              {{ report_form.connect }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.another_tell}}
+            </td>
+            <td>
+              {{ report_form.another_tell }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{people.fudaoyuan}}
+            </td>
+            <td>
+              {{ report_form.fudaoyuan }}
+            </td>
+          </tr>
+
+
+
+
+
+        <tr>
+        <td>
+          {{ report_form.myclass }}
+        </td>
+        <td>
+          {{ report_form.name }}
+        </td>
+        <td>
+          {{ report_form.reason_in_school }}
+        </td>
+        <td>
+          {{ report_form.reason_out_school }}
+        </td>
+        <td>
+          {{ report_form.return_time }}
+        </td>
+        <td>
+          {{ report_form.tell }}
+        </td>
+        <td>
+          {{ report_form.connect }}
+        </td>
+        <td>
+          {{ report_form.another_tell }}
+        </td>
+        <td>
+          {{ report_form.fudaoyuan }}
+        </td>
+      </tr>
+  -->
